@@ -1,6 +1,6 @@
 // import { getChatGPTReply as getReply } from '../chatgpt/index.js'
 import { getOpenAiReply as getReply } from '../openai/index.js'
-import { botName, roomWhiteList, aliasWhiteList } from '../../config.js'
+import { botName, roomWhiteList, aliasWhiteList, timeoutLimit } from '../../config.js'
 
 /**
  * 默认消息发送
@@ -9,42 +9,60 @@ import { botName, roomWhiteList, aliasWhiteList } from '../../config.js'
  * @returns {Promise<void>}
  */
 export async function defaultMessage(msg, bot) {
-  const contact = msg.talker() // 发消息人
-  const receiver = msg.to() // 消息接收人
-  const content = msg.text() // 消息内容
-  const room = msg.room() // 是否是群消息
-  const roomName = (await room?.topic()) || null // 群名称
-  const alias = (await contact.alias()) || (await contact.name()) // 发消息人昵称
-  const remarkName = await contact.alias() // 备注名称
-  const name = await contact.name() // 微信名称
-  const isText = msg.type() === bot.Message.Type.Text // 消息类型是否为文本
-  const isRoom = roomWhiteList.includes(roomName) && content.includes(`${botName}`) // 是否在群聊白名单内并且艾特了机器人
-  const isAlias = aliasWhiteList.includes(remarkName) || aliasWhiteList.includes(name) // 发消息的人是否在联系人白名单内
-  const isBotSelf = botName === remarkName || botName === name // 是否是机器人自己
+  // 发消息人
+  const contact = msg.talker()
+  // 消息接收人
+  const receiver = msg.to()
+  // 消息内容
+  const content = msg.text()
+  // 是否是群消息
+  const room = msg.room()
+  // 群名称
+  const roomName = (await room?.topic()) || null
+  // 发消息人昵称
+  const alias = (await contact.alias()) || (await contact.name())
+  // 备注名称
+  const remarkName = await contact.alias()
+  // 微信名称
+  const name = await contact.name()
+  // 消息类型是否为文本
+  const isText = msg.type() === bot.Message.Type.Text
+  // 是否在群聊白名单内并且艾特了机器人
+  const isRoom = roomWhiteList.includes(roomName) && content.includes(`${botName}`)
+  // 发消息的人是否在联系人白名单内
+  const isAlias = aliasWhiteList.includes(remarkName) || aliasWhiteList.includes(name)
+  // 是否是机器人自己
+  const isBotSelf = botName === remarkName || botName === name
   // TODO 你们可以根据自己的需求修改这里的逻辑
-  if (isText && !isBotSelf) {
-    console.log('1:', JSON.stringify(msg))
-    console.log('2:',Date.now(), 1e3 * msg.payload.timestamp, Date.now() - 1e3 * msg.payload.timestamp)
-    if ((Date.now() - 1e3 * msg.payload.timestamp) > 500000) return
-    // console.log(!content.startsWith('? ') && !content.startsWith('？ ') && !content.startsWith('> '))
-    // if (!content.startsWith('? ') && !content.startsWith('？ ') && !content.startsWith('> ')) return
+
+  if (isText && ! isBotSelf) {
+
+    // 超过时限的过时消息不恢复
+    if ((Date.now() - 1e3 * msg.payload.timestamp) > timeoutLimit) return
+
     try {
-      const trimed = content
-      console.log('3:',trimed.length, isRoom, isAlias, room, !! room)
-      if (trimed.length < 2) return
-      
+
+      // 过滤单个字的消息
+      if (content.length < 2) return
+
       // 区分群聊和私聊
       if (isRoom) {
-        const trimed = content.substr(3)
-        console.log('4:公聊')
-        await room.say(await getReply(trimed.replace(`${botName}`, '')))
+
+        // 去掉机器人name
+        const prompt = content.substr(botName.length + 1).replace(`${botName}`, '');
+
+        await room.say(await getReply(prompt))
+
         return
       }
+
       // 私人聊天，白名单内的直接发送
-      if (isAlias && !room) {
-        console.log('4:私聊')
-        await contact.say(await getReply(trimed))
+      if (isAlias && ! room) {
+
+        await contact.say(await getReply(content))
+
       }
+
     } catch (e) {
       console.error(e)
     }
@@ -65,7 +83,7 @@ export async function shardingMessage(message, bot) {
   }
   const text = message.text()
   const room = message.room()
-  if (!room) {
+  if (! room) {
     console.log(`Chat GPT Enabled User: ${talker.name()}`)
     const response = await getChatGPTReply(text)
     await trySay(talker, response)

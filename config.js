@@ -6,3 +6,6 @@ export const roomWhiteList = ['为了测试必须有一个群名', '群机器人
 
 // 联系人白名单，白名单内的联系人才会自动回复
 export const aliasWhiteList = ['兔子熊猫考拉泽', '莣孒嬡']
+
+// 多少毫秒认为消息过期
+export const timeoutLimit = 500000;
