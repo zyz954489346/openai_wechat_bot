@@ -28,12 +28,16 @@ export async function defaultMessage(msg, bot) {
   // 消息类型是否为文本
   const isText = msg.type() === bot.Message.Type.Text
   // 是否在群聊白名单内并且艾特了机器人
-  const isRoom = roomWhiteList.includes(roomName) && content.includes(`${botName}`)
+  const isRoom = roomWhiteList.includes(roomName)
+    &&
+    (content.indexOf(`@${botName}`) === 0 || content.includes('<br/>- - - - - - - - - - - - - - -<br/>@' + botName))
   // 发消息的人是否在联系人白名单内
   const isAlias = aliasWhiteList.includes(remarkName) || aliasWhiteList.includes(name)
   // 是否是机器人自己
   const isBotSelf = botName === remarkName || botName === name
   // TODO 你们可以根据自己的需求修改这里的逻辑
+
+  // console.log(msg)
 
   if (isText && ! isBotSelf) {
 
@@ -49,7 +53,7 @@ export async function defaultMessage(msg, bot) {
       if (isRoom) {
 
         // 去掉机器人name
-        const prompt = content.substr(botName.length + 1).replace(`${botName}`, '');
+        const prompt = content.replaceAll(`@${botName}`, '');
 
         await room.say(await getReply(prompt))
 
