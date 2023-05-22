@@ -30,7 +30,7 @@ export async function initSchedule(bot) {
   });
 
   // 更新提示
-  schedule.scheduleJob(new Date(2023, 5, 22, 16, 45, 0), async() => {
+  schedule.scheduleJob(new Date(2023, 5, 22, 16, 48, 0), () => {
     console.log('☀️公告');
     room.say('2023-05-22 AI助手升级完，新增以下功能： 1. 每日早安 2. 午休智能吃饭提醒。');
   });
