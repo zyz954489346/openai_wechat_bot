@@ -35,7 +35,7 @@ export async function initSchedule(bot) {
   schedule.scheduleJob(new Date(Date.now() + 5000), async () => {
     console.log('☀️公告');
 
-    const room = await getRoom(bot, 1);
-    room.say('2023-05-22 AI助手升级完，新增以下功能： 1. 每日早安 2. 午休智能吃饭提醒。');
+    const room = await getRoom(bot,);
+    room.say('2023-05-22 AI 助手升级完毕，新增以下功能： 1. 每日早安 2. 午休智能吃饭提醒。[Ver: 1.1]');
   });
 }
