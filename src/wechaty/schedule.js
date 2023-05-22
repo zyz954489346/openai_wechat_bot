@@ -7,6 +7,7 @@ async function getRoom(bot){
 }
 
 export async function initSchedule(bot) {
+  console.log('☀️init Schedule');
   // 聊天室实例
   const room = await getRoom(bot);
 
@@ -18,16 +19,19 @@ export async function initSchedule(bot) {
 
   // 早安 8:30
   schedule.scheduleJob('* 0 8 * * *', async () => {
+    console.log('☀️早安');
     room.say(await getReply('请用生动的语言和群友们说早安，并引用一句名人名言。先按照第一行输出问候语，第二行名人名言的格式输出。'));
   });
 
   // 午安 12:30
   schedule.scheduleJob('* 0 12 * * *', async () => {
+    console.log('☀️午安');
     room.say(await getReply('请用生动的语言和群友们说中午好，提醒大家吃中午饭，并引用资料证明好好吃午饭的重要性。'));
   });
 
   // 更新提示
-  schedule.scheduleJob(new Date(2023, 5, 22, 16, 35, 0), async() => {
-    room.say('2023-05-22 AI助手升级完，新增以下功能： 1. 每日早安 2. 午休智能吃法提醒。');
+  schedule.scheduleJob(new Date(2023, 5, 22, 16, 45, 0), async() => {
+    console.log('☀️公告');
+    room.say('2023-05-22 AI助手升级完，新增以下功能： 1. 每日早安 2. 午休智能吃饭提醒。');
   });
 }
