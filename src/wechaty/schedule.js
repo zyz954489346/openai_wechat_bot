@@ -28,6 +28,6 @@ export async function initSchedule(bot) {
 
   // 更新提示
   schedule.scheduleJob(new Date(2023, 5, 23, 16, 30, 0), async() => {
-    room.say(await getReply('2023-05-22 AI助手升级完，新增以下功能： 1. 每日早安 2. 午休智能吃法提醒。'));
+    room.say('2023-05-22 AI助手升级完，新增以下功能： 1. 每日早安 2. 午休智能吃法提醒。');
   });
 }
