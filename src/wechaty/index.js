@@ -1,6 +1,8 @@
 import { WechatyBuilder, ScanStatus, log } from 'wechaty'
 import qrTerminal from 'qrcode-terminal'
 import { defaultMessage, shardingMessage } from './sendMessage.js'
+import { initSchedule } from './schedule.js'
+
 // 扫码
 function onScan(qrcode, status) {
   if (status === ScanStatus.Waiting || status === ScanStatus.Timeout) {
@@ -19,6 +21,8 @@ function onLogin(user) {
   const date = new Date()
   console.log(`Current time:${date}`)
   console.log(`Automatic robot chat mode has been activated`)
+
+  initSchedule(bot);
 }
 
 // 登出
@@ -39,7 +43,6 @@ async function onFriendShip(friendship) {
 /**
  * 消息发送
  * @param msg
- * @param isSharding
  * @returns {Promise<void>}
  */
 async function onMessage(msg) {
