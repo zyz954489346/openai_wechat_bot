@@ -16,7 +16,7 @@ export async function initSchedule(bot) {
   })
 
   // 早安 8:30
-  schedule.scheduleJob('* 0 8 * * *', async () => {
+  schedule.scheduleJob('0 0 8 * * *', async () => {
     console.log('☀️早安');
 
     const room = await getRoom(bot);
@@ -24,7 +24,7 @@ export async function initSchedule(bot) {
   });
 
   // 午安 12:30
-  schedule.scheduleJob('* 0 12 * * *', async () => {
+  schedule.scheduleJob('0 0 12 * * *', async () => {
     console.log('☀️午安');
 
     const room = await getRoom(bot);
@@ -36,6 +36,6 @@ export async function initSchedule(bot) {
     console.log('☀️公告');
 
     const room = await getRoom(bot);
-    room.say('2023-05-22 AI 助手升级完毕，新增以下功能： 1. 每日早安 2. 午休智能吃饭提醒。[Ver: 1.1]');
+    room.say('2023-05-22 AI 助手升级完毕，新增以下功能： 修复定时任务触发时机在1分钟内触发多次的bug。[Ver: 1.2]');
   });
 }
