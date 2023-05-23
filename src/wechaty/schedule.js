@@ -36,6 +36,6 @@ export async function initSchedule(bot) {
     console.log('☀️公告');
 
     const room = await getRoom(bot);
-    room.say('AI 助手升级完毕，新增以下功能： 修复定时任务触发时机在1分钟内触发多次的bug。[Ver: 1.2]');
+    room.say('⭐️ AI 助手升级完毕，新增以下功能： 修复定时任务触发时机在1分钟内触发多次的bug。[Ver: 1.2]');
   });
 }
