@@ -32,10 +32,10 @@ export async function initSchedule(bot) {
   });
 
   // 更新提示
-  schedule.scheduleJob(new Date(Date.now() + 5000), async () => {
-    console.log('☀️公告');
-
-    const room = await getRoom(bot);
-    room.say('⭐️ AI 助手升级完毕，新增以下功能： 修复定时任务触发时机在1分钟内触发多次的bug。[Ver: 1.2]');
-  });
+  // schedule.scheduleJob(new Date(Date.now() + 5000), async () => {
+  //   console.log('☀️公告');
+  //
+  //   const room = await getRoom(bot);
+  //   room.say('⭐️ AI 助手升级完毕，新增以下功能： 修复定时任务触发时机在1分钟内触发多次的bug。[Ver: 1.2]');
+  // });
 }
