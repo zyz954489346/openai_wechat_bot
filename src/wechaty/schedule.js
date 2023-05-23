@@ -16,7 +16,7 @@ export async function initSchedule(bot) {
   })
 
   // 早安 8:30
-  schedule.scheduleJob('0 0 8 * * *', async () => {
+  schedule.scheduleJob('0 30 8 * * *', async () => {
     console.log('☀️早安');
 
     const room = await getRoom(bot);
