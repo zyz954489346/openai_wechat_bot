@@ -36,7 +36,7 @@ export async function initSchedule(bot) {
     console.log('☀打卡提醒');
 
     const room = await getRoom(bot);
-    room.say('@爸爸救我 ' + await getReply('请用生动的语言提醒群友下班打卡，并强调按时打卡的重要性。'));
+    room.say(await getReply('请用生动的语言提醒群友下班打卡，并强调按时打卡的重要性。'));
   });
 
   // 更新提示
