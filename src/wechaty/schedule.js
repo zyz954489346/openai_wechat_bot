@@ -31,11 +31,19 @@ export async function initSchedule(bot) {
     room.say(await getReply('请用生动的语言和群友们说中午好，提醒大家吃中午饭，并引用资料证明好好吃午饭的重要性。'));
   });
 
+  // 18:30 打卡提醒
+  schedule.scheduleJob('0 30 18 * * *', async () => {
+    console.log('☀打卡提醒');
+
+    const room = await getRoom(bot);
+    room.say('@爸爸救我 ' + await getReply('请用生动的语言提醒群友下班打卡，并强调按时打卡的重要性。'));
+  });
+
   // 更新提示
-  // schedule.scheduleJob(new Date(Date.now() + 5000), async () => {
-  //   console.log('☀️公告');
-  //
-  //   const room = await getRoom(bot);
-  //   room.say('⭐️ AI 助手升级完毕，新增以下功能： 修复定时任务触发时机在1分钟内触发多次的bug。[Ver: 1.2]');
-  // });
+  schedule.scheduleJob(new Date(Date.now() + 5000), async () => {
+    console.log('☀️公告');
+
+    const room = await getRoom(bot);
+    room.say('⭐️ AI 助手升级完毕，新增以下功能： @爸爸救我 新增6:30的下班打卡提醒。[Ver: 1.3]');
+  });
 }
