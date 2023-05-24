@@ -40,10 +40,10 @@ export async function initSchedule(bot) {
   });
 
   // 更新提示
-  schedule.scheduleJob(new Date(Date.now() + 5000), async () => {
-    console.log('☀️公告');
-
-    const room = await getRoom(bot);
-    room.say('⭐️ AI 助手升级完毕，新增以下功能： @爸爸救我 新增6:30的下班打卡提醒。[Ver: 1.3]');
-  });
+  // schedule.scheduleJob(new Date(Date.now() + 5000), async () => {
+  //   console.log('☀️公告');
+  //
+  //   const room = await getRoom(bot);
+  //   room.say('⭐️ AI 助手升级完毕，新增以下功能： @爸爸救我 新增6:30的下班打卡提醒。[Ver: 1.3]');
+  // });
 }
