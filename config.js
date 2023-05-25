@@ -9,3 +9,9 @@ export const aliasWhiteList = ['兔子熊猫考拉泽', '莣孒嬡']
 
 // 多少毫秒认为消息过期
 export const timeoutLimit = 500000;
+
+// 上班打卡at
+export const morningAt = ['借凑字', '糖炒栗子', '兔子熊猫考拉泽'];
+
+// 下班打卡at
+export const nightAt = ['糖炒栗子', '兔子熊猫考拉泽'];
