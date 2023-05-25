@@ -31,9 +31,11 @@ export async function initSchedule(bot) {
   schedule.scheduleJob('0 58 8 * * *', async () => {
     console.log('☀️ 上班打卡');
 
+    const saying = await getReply('请和我说早安，并提醒我上班打卡。');
+
     morningAt.forEach(async (name) => {
       let contact = await getContact(bot, name);
-      contact.say('早上好，别忘记上班打卡哦😁~');
+      contact.say(saying);
     })
   });
 
@@ -50,9 +52,11 @@ export async function initSchedule(bot) {
   schedule.scheduleJob('0 30 18 * * *', async () => {
     console.log('☀️ 下班打卡');
 
+    const saying = await getReply('请和我说晚上好，并提醒我下班打卡。');
+
     nightAt.forEach(async (name) => {
       let contact = await getContact(bot, name);
-      contact.say('晚上好，别忘记下班打卡哦😁~');
+      contact.say(saying);
     })
   });
 
@@ -61,9 +65,9 @@ export async function initSchedule(bot) {
     // const name2 = await room.member('兔子熊猫考拉泽')
     // const name3 = await room.member('Jojo Jiang')
     // room.say`${name2} ${name3} 这是一条用于测试at是否成功的消息V5`;
-    console.log('☀️公告');
-
-    const room = await getRoom(bot);
-    room.say('⭐️ AI 助手升级完毕，新增以下功能：1.新增上班打卡、下班打卡，并按时精准推送到对应好友的微信消息中。[Ver: 1.4]');
+    // console.log('☀️公告');
+    //
+    // const room = await getRoom(bot);
+    // room.say('⭐️ AI 助手升级完毕，新增以下功能：1.新增上班打卡、下班打卡，并按时精准推送到对应好友的微信消息中。[Ver: 1.4]');
   });
 }
