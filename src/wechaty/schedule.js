@@ -28,7 +28,7 @@ export async function initSchedule(bot) {
   });
 
   // 早 9:00 打卡提醒
-  schedule.scheduleJob('0 58 8 * * *', async () => {
+  schedule.scheduleJob('0 0 9 * * *', async () => {
     console.log('☀️ 上班打卡');
 
     const saying = await getReply('请和我说早安，并提醒我上班打卡。');
