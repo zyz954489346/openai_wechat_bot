@@ -20,7 +20,7 @@ export async function initSchedule(bot) {
   })
 
   // 早安 8:30
-  schedule.scheduleJob('0 30 8 * * *', async () => {
+  schedule.scheduleJob('0 30 8 * * 1,2,3,4,5', async () => {
     console.log('☀️早安');
 
     const room = await getRoom(bot);
@@ -28,7 +28,7 @@ export async function initSchedule(bot) {
   });
 
   // 早 9:00 打卡提醒
-  schedule.scheduleJob('0 0 9 * * *', async () => {
+  schedule.scheduleJob('0 0 9 * * 1,2,3,4,5', async () => {
     console.log('☀️ 上班打卡');
 
     const saying = await getReply('请和我说早安，并提醒我上班打卡。');
@@ -40,7 +40,7 @@ export async function initSchedule(bot) {
   });
 
   // 午安 12:30
-  schedule.scheduleJob('0 0 12 * * *', async () => {
+  schedule.scheduleJob('0 0 12 * * 1,2,3,4,5', async () => {
     console.log('☀️午安');
 
     const room = await getRoom(bot);
@@ -49,7 +49,7 @@ export async function initSchedule(bot) {
 
 
   // 18:30 打卡提醒
-  schedule.scheduleJob('0 30 18 * * *', async () => {
+  schedule.scheduleJob('0 30 18 * * 1,2,3,4,5', async () => {
     console.log('☀️ 下班打卡');
 
     const saying = await getReply('请和我说晚上好，并提醒我下班打卡。');
@@ -65,9 +65,9 @@ export async function initSchedule(bot) {
     // const name2 = await room.member('兔子熊猫考拉泽')
     // const name3 = await room.member('Jojo Jiang')
     // room.say`${name2} ${name3} 这是一条用于测试at是否成功的消息V5`;
-    // console.log('☀️公告');
-    //
-    // const room = await getRoom(bot);
-    // room.say('⭐️ AI 助手升级完毕，新增以下功能：1.新增上班打卡、下班打卡，并按时精准推送到对应好友的微信消息中。[Ver: 1.4]');
+    console.log('☀️公告');
+
+    const room = await getRoom(bot);
+    room.say('⭐️ AI 助手升级完毕，新增以下功能：1.限制所有提醒（早、午安，打卡提醒）均在周1-5触发，自动避开周六日。[Ver: 1.5]');
   });
 }
