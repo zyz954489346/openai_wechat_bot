@@ -44,7 +44,7 @@ export async function initSchedule(bot) {
     console.log('☀️午安');
 
     const room = await getRoom(bot);
-    room.say(await getReply('请用生动的语言和群友们说中午好，提醒大家吃中午饭，并引用资料证明好好吃午饭的重要性。'));
+    room.say(await getReply('请用生动的语言和群友们说中午好，提醒大家吃中午饭，并推荐一道适合作为午饭的美食。'));
   });
 
 
@@ -68,6 +68,6 @@ export async function initSchedule(bot) {
     console.log('☀️公告');
 
     const room = await getRoom(bot);
-    room.say('⭐️ AI 助手升级完毕，新增以下功能：1.限制所有提醒（早、午安，打卡提醒）均在周1-5触发，自动避开周六日。[Ver: 1.5]');
+    room.say('⭐️ AI 助手升级完毕，新增以下功能：1.午饭提醒改为推荐美食而不是无根据的放臭屁。[Ver: 1.6]');
   });
 }
