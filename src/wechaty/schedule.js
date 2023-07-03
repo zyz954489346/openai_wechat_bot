@@ -22,7 +22,13 @@ function isHoliday(date) {
 
   const holidayConf = holiday[year][month + '-' + day] || null;
 
-  return !! (holidayConf && ((holidayConf['holiday'] || false) === true));
+  if (holidayConf) {
+    // 法定假日
+    return holidayConf['holiday'] === true;
+  }
+
+  // 正常的周六日
+  return date.getDay() === 6 || date.getDay() === 0;
 }
 
 export async function initSchedule(bot) {
@@ -35,7 +41,7 @@ export async function initSchedule(bot) {
   })
 
   // 早安 8:30
-  schedule.scheduleJob('0 30 8 * * 1,2,3,4,5', async () => {
+  schedule.scheduleJob('0 30 8 * * *', async () => {
     console.log('☀️早安');
 
     if (! isHoliday()) {
@@ -45,7 +51,7 @@ export async function initSchedule(bot) {
   });
 
   // 早 9:00 打卡提醒
-  schedule.scheduleJob('0 0 9 * * 1,2,3,4,5', async () => {
+  schedule.scheduleJob('0 0 9 * * *', async () => {
     console.log('☀️ 上班打卡');
 
     if (! isHoliday()) {
@@ -59,7 +65,7 @@ export async function initSchedule(bot) {
   });
 
   // 午安 12:30
-  schedule.scheduleJob('0 0 12 * * 1,2,3,4,5', async () => {
+  schedule.scheduleJob('0 0 12 * * *', async () => {
     console.log('☀️午安');
 
     if (! isHoliday()) {
@@ -70,7 +76,7 @@ export async function initSchedule(bot) {
   });
 
   // 18:30 打卡提醒
-  schedule.scheduleJob('0 30 18 * * 1,2,3,4,5', async () => {
+  schedule.scheduleJob('0 30 18 * * *', async () => {
     console.log('☀️ 下班打卡');
 
     if (! isHoliday()) {
@@ -90,7 +96,7 @@ export async function initSchedule(bot) {
     // room.say`${name2} ${name3} 这是一条用于测试at是否成功的消息V5`;
     // console.log('☀️公告');
 
-    const room = await getRoom(bot);
-    room.say('⭐️ AI 助手升级完毕，新增以下功能：1. 助手的各种提醒功能能动态地按照 中华人民共和国的法定节假日安排 自动决策是否发送。[Ver: 1.7]');
+    // const room = await getRoom(bot);
+    // room.say('⭐️ AI 助手升级完毕，新增以下功能：1. 助手的各种提醒功能能动态地按照 中华人民共和国的法定节假日安排 自动决策是否发送。[Ver: 1.7]');
   });
 }
