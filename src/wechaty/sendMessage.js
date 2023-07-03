@@ -1,6 +1,7 @@
 // import { getChatGPTReply as getReply } from '../chatgpt/index.js'
-import { getOpenAiReply as getReply } from '../openai/index.js'
+import { dallEImageReply as getImgReply, getOpenAiReply as getReply } from '../openai/index.js'
 import { botName, roomWhiteList, aliasWhiteList, timeoutLimit } from '../../config.js'
+import { FileBox } from 'file-box'
 
 /**
  * 默认消息发送
@@ -55,7 +56,7 @@ export async function defaultMessage(msg, bot) {
         // 去掉机器人name
         const prompt = content.replaceAll(`@${botName}`, '');
 
-        await room.say(await getReply(prompt))
+        await room.say(await intentionJudgmentAndReply(prompt))
 
         return
       }
@@ -63,13 +64,25 @@ export async function defaultMessage(msg, bot) {
       // 私人聊天，白名单内的直接发送
       if (isAlias && ! room) {
 
-        await contact.say(await getReply(content))
+        await contact.say(await intentionJudgmentAndReply(content))
 
       }
 
     } catch (e) {
       console.error(e)
     }
+  }
+}
+
+// 意图判断
+async function intentionJudgmentAndReply(prompt) {
+  if (prompt.trim().startsWith('作图//')) {
+    const url = await getImgReply(prompt);
+    // 绘图
+    return FileBox.fromUrl(url);
+  } else {
+    // chat模型
+    return await getReply(prompt);
   }
 }
 

@@ -97,6 +97,6 @@ export async function initSchedule(bot) {
     // console.log('☀️公告');
 
     // const room = await getRoom(bot);
-    // room.say('⭐️ AI 助手升级完毕，新增以下功能：1. 助手的各种提醒功能能动态地按照 中华人民共和国的法定节假日安排 自动决策是否发送。[Ver: 1.7]');
+    room.say('⭐️ AI 助手升级完毕，新增以下功能：1. 十月现在支持按照描述生成图片的功能，用法格式"@助手 图片//你对图片的描述"。[Ver: 1.8]');
   });
 }

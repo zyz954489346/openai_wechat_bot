@@ -44,6 +44,23 @@ export async function getOpenAiReply(prompt) {
   return `${reply}\n来自 ${chosen_model}`
 }
 
+
+export async function dallEImageReply(prompt) {
+  console.log('🚀🚀🚀 / Using model', 'DALL-E');
+  let reply = '';
+  const response = await openai.createImage({
+    prompt,
+    n: 1,
+    size: '512x512'
+  });
+
+  reply = response.data.data[0].url;
+
+  console.log('🚀🚀🚀 / reply', reply)
+
+  return reply;
+}
+
 function markdownToText(markdown) {
   return remark()
     .use(stripMarkdown)
