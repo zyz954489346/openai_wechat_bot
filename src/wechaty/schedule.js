@@ -70,7 +70,7 @@ export async function initSchedule(bot) {
 
     if (! isHoliday()) {
       const room = await getRoom(bot);
-      room.say(await getReply('请用生动的语言和群友们说中午好，提醒大家吃中午饭，并推荐一道适合作为午饭的美食。'));
+      room.say(await getReply('请用生动的语言和群友们说中午好，并提醒大家要好好吃中午饭。'));
     }
 
   });
@@ -96,7 +96,7 @@ export async function initSchedule(bot) {
     // room.say`${name2} ${name3} 这是一条用于测试at是否成功的消息V5`;
     // console.log('☀️公告');
 
-    const room = await getRoom(bot);
-    room.say('⭐️ AI 助手升级完毕，新增以下功能：1. 十月现在支持按照描述生成图片的功能，用法格式"@助手 图片//你对图片的描述"。[Ver: 1.8]');
+    // const room = await getRoom(bot);
+    // room.say('⭐️ AI 助手升级完毕，新增以下功能：1. 十月现在支持按照描述生成图片的功能，用法格式"@助手 图片//你对图片的描述"。[Ver: 1.8]');
   });
 }
