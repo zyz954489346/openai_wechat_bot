@@ -96,7 +96,7 @@ export async function initSchedule(bot) {
     // room.say`${name2} ${name3} 这是一条用于测试at是否成功的消息V5`;
     console.log('☀️公告');
 
-    const room = await getRoom(bot);
-    room.say('⭐️ AI 助手升级完毕，新增以下功能：更换ApiKey，有效期至231101"。[Ver: 1.8]');
+    // const room = await getRoom(bot);
+    // room.say('⭐️ AI 助手升级完毕，新增以下功能：更换ApiKey，有效期至231101"。[Ver: 1.8]');
   });
 }
