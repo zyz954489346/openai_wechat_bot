@@ -34,7 +34,7 @@ export async function getOpenAiReply(prompt) {
     const response = await openai.createChatCompletion({
         model: chosen_model,
         messages:[
-          {"role": "system", content:"你是一个群聊小助手，请用中文交流，并且保持态度亲切。"},
+          {"role": "system", content:"你是一个群聊小助手，你的名字叫'十月'，请用中文交流，并且保持态度亲切，言语亲切风趣幽默。"},
           {"role": "user", content: prompt}
         ]})
 

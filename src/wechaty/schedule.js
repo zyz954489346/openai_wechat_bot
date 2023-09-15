@@ -46,7 +46,7 @@ export async function initSchedule(bot) {
 
     if (! isHoliday()) {
       const room = await getRoom(bot);
-      room.say(await getReply('请用生动的语言和群友们说早安，并引用一句名人名言。先按照第一行输出问候语，第二行名人名言的格式输出。'));
+      room.say(await getReply('请用生动的语言和群友们说早安，并讲一个特别好笑的笑话来让大家快乐的开启新的一天。'));
     }
   });
 
@@ -70,7 +70,7 @@ export async function initSchedule(bot) {
 
     if (! isHoliday()) {
       const room = await getRoom(bot);
-      room.say(await getReply('请用生动的语言和群友们说中午好，并提醒大家要好好吃中午饭。'));
+      room.say(await getReply('请用生动简洁的语言和群友们说中午好，并提醒大家要好好吃中午饭。'));
     }
 
   });
@@ -96,7 +96,7 @@ export async function initSchedule(bot) {
     // room.say`${name2} ${name3} 这是一条用于测试at是否成功的消息V5`;
     console.log('☀️公告');
 
-    // const room = await getRoom(bot);
-    // room.say('⭐️ AI 助手升级完毕，新增以下功能：更换ApiKey，有效期至231101"。[Ver: 1.8]');
+    const room = await getRoom(bot);
+    room.say('⭐️ AI 助手升级完毕，新增以下功能：优化十月的语言生成，使之更加具有亲和力"。[Ver: 1.9]');
   });
 }
