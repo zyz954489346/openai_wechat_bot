@@ -98,6 +98,6 @@ export async function initSchedule(bot) {
 
     const room = await getRoom(bot);
     // room.say('⭐️ AI 助手升级完毕，新增以下功能：优化十月的语言生成，使之更加具有亲和力"。[Ver: 1.9]');
-    room.say('⭐️ 重启成功。[Ver: 1.9]');
+    // room.say('⭐️ 重启成功。[Ver: 1.9]');
   });
 }
