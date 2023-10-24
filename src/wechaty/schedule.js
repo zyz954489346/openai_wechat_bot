@@ -46,7 +46,7 @@ export async function initSchedule(bot) {
 
     if (! isHoliday()) {
       const room = await getRoom(bot);
-      room.say(await getReply('请用生动的语言和群友们说早安，并讲一个特别好笑的笑话来让大家快乐的开启新的一天。'));
+      room.say(await getReply('请用生动的语言和群友们说早安，并且随机在 历史上的今天、讲笑话、早餐推荐 三个主题中选取一个作为主题，作为早安的附属内容讲述，讲述的内容要符合中国人的语言习惯和理解方式。'));
     }
   });
 
@@ -97,7 +97,7 @@ export async function initSchedule(bot) {
     console.log('☀️公告');
 
     const room = await getRoom(bot);
-    // room.say('⭐️ AI 助手升级完毕，新增以下功能：优化十月的语言生成，使之更加具有亲和力"。[Ver: 1.9]');
+    room.say('⭐️ AI 助手升级完毕，新增以下功能：1.增加十月的早上好输出内容的多样性。 2. 拒绝黄色笑话 3.使输出更具有中国特色"。[Ver: 1.10]');
     // room.say('⭐️ 重启成功。[Ver: 1.9]');
   });
 }
