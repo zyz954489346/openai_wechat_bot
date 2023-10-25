@@ -46,7 +46,7 @@ export async function initSchedule(bot) {
 
     if (! isHoliday()) {
       const room = await getRoom(bot);
-      room.say(await getReply('请用生动的语言和群友们说早安，并且随机在 历史故事、讲笑话、早餐推荐 三个主题中选取一个作为主题，作为早安的附属内容讲述，讲述的内容要符合中国人的语言习惯和理解方式。'));
+      room.say(await getReply('请用生动的语言和群友们说早安。并且在 （历史故事、讲笑话、早餐推荐） 三个主题中只选取其中的一个作为主题，将其作为早安的附属内容讲述。同时讲述的内容要符合中国人的语言习惯和理解方式。'));
     }
   });
 
