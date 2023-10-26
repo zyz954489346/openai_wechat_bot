@@ -97,7 +97,7 @@ export async function initSchedule(bot) {
     console.log('☀️公告');
 
     const room = await getRoom(bot);
-    // room.say('⭐️ AI 助手升级完毕，新增以下功能：1.增加十月的早上好输出内容的多样性。 2. 拒绝黄色笑话 3.使输出更具有中国特色"。[Ver: 1.10]');
+    room.say('⭐️ AI 助手升级完毕，新增以下功能：将核心AI模型从GPT-3.5切换至百度文心一言4.0，以提升对中文互联网内容的理解力提升"。[Ver: 1.11]');
     // room.say('⭐️ 重启成功。[Ver: 1.9]');
   });
 }
