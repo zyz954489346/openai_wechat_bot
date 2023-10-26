@@ -1,5 +1,5 @@
-// import { getChatGPTReply as getReply } from '../chatgpt/index.js'
-import { dallEImageReply as getImgReply, getOpenAiReply as getReply } from '../openai/index.js'
+import { dallEImageReply as getImgReply } from '../openai/index.js'
+import {chat} from "../openai/auto.js";
 import { botName, roomWhiteList, aliasWhiteList, timeoutLimit } from '../../config.js'
 import { FileBox } from 'file-box'
 
@@ -82,7 +82,7 @@ async function intentionJudgmentAndReply(prompt) {
     return FileBox.fromUrl(url);
   } else {
     // chat模型
-    return await getReply(prompt);
+    return await chat(prompt);
   }
 }
 

@@ -1,6 +1,6 @@
 import schedule from 'node-schedule'
 import { roomWhiteList, morningAt, nightAt } from '../../config.js'
-import { getOpenAiReply as getReply } from "../openai/index.js";
+import {chat} from "../openai/auto.js";
 import holiday from '../resources/holiday/index.js';
 
 // 获取群聊实例
@@ -46,7 +46,7 @@ export async function initSchedule(bot) {
 
     if (! isHoliday()) {
       const room = await getRoom(bot);
-      room.say(await getReply('请用生动的语言和群友们说早安。并且在 （历史故事、讲笑话、早餐推荐） 三个主题中只选取其中的一个作为主题，将其作为早安的附属内容讲述。同时讲述的内容要符合中国人的语言习惯和理解方式。'));
+      room.say(await chat('请用生动的语言和群友们说早安。并且在 （历史故事、讲笑话、早餐推荐） 三个主题中只选取其中的一个作为主题，将其作为早安的附属内容讲述。同时讲述的内容要符合中国人的语言习惯和理解方式。'));
     }
   });
 
@@ -55,7 +55,7 @@ export async function initSchedule(bot) {
     console.log('☀️ 上班打卡');
 
     if (! isHoliday()) {
-      const saying = await getReply('请和我说早安，并提醒我上班打卡。');
+      const saying = await chat('请和我说早安，并提醒我上班打卡。');
       morningAt.forEach(async (name) => {
         let contact = await getContact(bot, name);
         contact.say(saying);
@@ -70,7 +70,7 @@ export async function initSchedule(bot) {
 
     if (! isHoliday()) {
       const room = await getRoom(bot);
-      room.say(await getReply('请用生动简洁的语言和群友们说中午好，并提醒大家要好好吃中午饭。'));
+      room.say(await chat('请用生动简洁的语言和群友们说中午好，并提醒大家要好好吃中午饭。'));
     }
 
   });
@@ -80,7 +80,7 @@ export async function initSchedule(bot) {
     console.log('☀️ 下班打卡');
 
     if (! isHoliday()) {
-      const saying = await getReply('请和我说晚上好，并提醒我下班打卡。');
+      const saying = await chat('请和我说晚上好，并提醒我下班打卡。');
       nightAt.forEach(async (name) => {
         let contact = await getContact(bot, name);
         contact.say(saying);
