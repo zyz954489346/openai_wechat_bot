@@ -59,10 +59,17 @@ export async function chatWithBot4(content) {
 
   let reply = '';
   let retryCount = 0;
+  let errMsg = '';
 
   while (! reply && retryCount < 3) {
-    const response = await axios.post(url, body, {headers});
+    response = await axios.post(url, body, {headers});
+
+    console.log('🚀🚀🚀 / Baidu reply', response.data);
+
     reply = markdownToText(response.data.result);
+
+    errMsg = response.data.error_msg || 'Chat调用失败'
+
     retryCount ++;
   }
 
@@ -70,10 +77,8 @@ export async function chatWithBot4(content) {
     reply = `${reply}\n 来自 文心一言v4`;
   }
 
-  console.log('🚀🚀🚀 / Baidu reply', response.data);
-
   if (! reply) {
-    throw Error(response.data.error_msg || 'Chat调用失败');
+    throw Error(errMsg);
   }
 
   return reply;
