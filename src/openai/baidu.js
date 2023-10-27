@@ -19,6 +19,8 @@ export async function getAccessToken() {
   const cacheKey = 'baidu_access_token';
   const cache = new nodeCache()
 
+  console.log('🚀🚀🚀 / Token Cache', cache.get(cacheKey))
+
   if (! cache.has(cacheKey) || ! cache.get(cacheKey)) {
     const url = `${domain}/oauth/2.0/token?client_id=${env.BAIDU_KEY}&client_secret=${env.BAIDU_SECRET}&grant_type=client_credentials`;
     const headers = {
@@ -55,13 +57,24 @@ export async function chatWithBot4(content) {
 
   console.log('🚀🚀🚀 / Baidu Chatting ', messages);
 
-  const response = await axios.post(url, body, {headers});
+  let reply = '';
+  let retryCount = 0;
 
-  let reply = markdownToText(response.data.result)
+  while (! reply && retryCount < 3) {
+    const response = await axios.post(url, body, {headers});
+    reply = markdownToText(response.data.result);
+    retryCount ++;
+  }
 
-  reply = `${reply}\n 来自 文心一言v4` ;
+  if (reply) {
+    reply = `${reply}\n 来自 文心一言v4`;
+  }
 
   console.log('🚀🚀🚀 / Baidu reply', response.data);
+
+  if (! reply) {
+    throw Error(response.data.error_msg || 'Chat调用失败');
+  }
 
   return reply;
 }
