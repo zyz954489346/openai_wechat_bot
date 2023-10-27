@@ -62,7 +62,7 @@ export async function chatWithBot4(content) {
   let errMsg = '';
 
   while (! reply && retryCount < 3) {
-    response = await axios.post(url, body, {headers});
+    const response = await axios.post(url, body, {headers});
 
     console.log('🚀🚀🚀 / Baidu reply', response.data);
 
