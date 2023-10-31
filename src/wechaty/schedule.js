@@ -1,6 +1,6 @@
 import schedule from 'node-schedule'
 import { roomWhiteList, morningAt, nightAt } from '../../config.js'
-import {chat} from "../openai/auto.js";
+import {chat} from "../openai/AIFactory.js";
 import holiday from '../resources/holiday/index.js';
 
 // 获取群聊实例

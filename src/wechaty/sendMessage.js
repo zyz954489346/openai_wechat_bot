@@ -1,5 +1,5 @@
 import { dallEImageReply as getImgReply } from '../openai/index.js'
-import {chat} from "../openai/auto.js";
+import {chat} from "../openai/AIFactory.js";
 import { botName, roomWhiteList, aliasWhiteList, timeoutLimit } from '../../config.js'
 import { FileBox } from 'file-box'
 

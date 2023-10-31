@@ -1,6 +1,6 @@
 import { WechatyBuilder, ScanStatus, log } from 'wechaty'
 import qrTerminal from 'qrcode-terminal'
-import { defaultMessage, shardingMessage } from './sendMessage.js'
+import { defaultMessage } from './sendMessage.js'
 import { initSchedule } from './schedule.js'
 
 // 扫码
