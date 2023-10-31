@@ -64,9 +64,10 @@ export const versionLog = async (bot) => {
 
   const verLog = `
   ⭐️ AI 助手升级完毕，新增以下功能：
-  1. 增加自动重试机制以防止任何形式的Fail 
-  2. 当回复不成功时，停止回调信息至微信。
-  -- [Ver: 1.12]
+  1. 重构25%代码，优化JavaScript执行效率。
+  2. 工厂模式注册AI模型实例，为后续模型快速切换提供支持
+  3. 全局高度自定义日志class封装，增加了多处关键位置Log。
+  -- [Ver: 1.13]
   `;
 
   if (verLog) {
