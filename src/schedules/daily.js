@@ -3,7 +3,7 @@ import { morningAt, nightAt } from '../../config.js'
 import { isHoliday } from "../helpers/index.js";
 import { getRoom, getContact } from "../helpers/index.js";
 import { chat } from "../openai/AIFactory.js";
-import { goodMorningTpl, goodNoonTpl, punchForWorkTpl } from "../openai/templates.js";
+import { goodMorningTpl, goodNoonTpl, punchForHomeTpl, punchForWorkTpl } from "../openai/templates.js";
 
 // 早点问候
 export const goodMorning = async (bot) => {
@@ -52,7 +52,7 @@ export const punchForHome = async (bot) => {
     return true;
   }
 
-  const saying = await chat(punchForWorkTpl);
+  const saying = await chat(punchForHomeTpl);
   nightAt.forEach(async (name) => {
     const contact = await getContact(bot, name);
     contact.say(saying);
