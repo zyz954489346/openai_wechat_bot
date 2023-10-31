@@ -1,5 +1,5 @@
-import schedule from 'node-schedule'
-import { roomWhiteList, morningAt, nightAt } from '../../config.js'
+
+import { morningAt, nightAt } from '../../config.js'
 import { isHoliday } from "../helpers/index.js";
 import { getRoom, getContact } from "../helpers/index.js";
 import { chat } from "../openai/AIFactory.js";
