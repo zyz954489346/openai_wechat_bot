@@ -1,7 +1,7 @@
 import { WechatyBuilder, ScanStatus, log } from 'wechaty'
 import qrTerminal from 'qrcode-terminal'
 import { defaultMessage } from './sendMessage.js'
-import { initSchedule } from './schedule.js'
+import { initSchedule } from "../schedules/index.js";
 
 // 扫码
 function onScan(qrcode, status) {
