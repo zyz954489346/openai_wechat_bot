@@ -67,6 +67,7 @@ export const versionLog = async (bot) => {
   1. 重构25%代码，优化JavaScript执行效率。
   2. 工厂模式注册AI模型实例，为后续模型快速切换提供支持
   3. 全局高度自定义日志class封装，增加了多处关键位置Log。
+  
   -- [Ver: 1.13]
   `;
 

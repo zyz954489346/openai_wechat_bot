@@ -50,7 +50,7 @@ export async function chatWithBot4(content) {
   }
   const messages = buildMessage(content);
   const body = {
-    system: '你是一个群聊助手，你的名字叫十月。',
+    system: `你是本群的群助手，你的名字叫${botName}，同时你也是大家的好朋友。`,
     messages: buildMessage(content),
     temperature: 0.3,
   };

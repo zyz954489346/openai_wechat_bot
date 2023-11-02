@@ -20,7 +20,7 @@ export const initSchedule = async (bot) => {
   schedule.scheduleJob('0 0 12 * * *', async () => {await goodNoon(bot)});
 
   // 下班打卡 18:30
-  schedule.cancelJob('0 30 18 * * *', async () => {await punchForHome(bot)});
+  schedule.scheduleJob('0 30 18 * * *', async () => {await punchForHome(bot)});
 
   // 更新日志
   // schedule.scheduleJob(new Date(Date.now() + 5000), () => versionLog(bot));
