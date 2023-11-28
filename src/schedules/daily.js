@@ -64,9 +64,9 @@ export const versionLog = async (bot) => {
 
   const verLog = `
   ⭐️ AI 助手升级完毕，新增以下功能：
-  1. 修复因作者拼写不正确导致18:30提醒失效问题
+  1. 再提5-12就鸡哔你
   
-  -- [Ver: 1.14]
+  -- [Ver: 1.15]
   `;
 
   if (verLog) {

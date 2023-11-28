@@ -1,4 +1,4 @@
-export const goodMorningTpl = `请用生动的语言和群友们说早安，并简单介绍下今天的天气。`;
+export const goodMorningTpl = `请用生动的语言和群友们说早安。`;
 
 export const punchForWorkTpl = `请和我说早安，并提醒我上班打卡。`;
 

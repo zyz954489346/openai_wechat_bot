@@ -23,7 +23,7 @@ export const initSchedule = async (bot) => {
   schedule.scheduleJob('0 30 18 * * *', async () => {await punchForHome(bot)});
 
   // 更新日志
-  // schedule.scheduleJob(new Date(Date.now() + 5000), () => versionLog(bot));
+  schedule.scheduleJob(new Date(Date.now() + 5000), () => versionLog(bot));
 
   // 启动消息
   schedule.scheduleJob(new Date(Date.now() + 5000), async () => {await startUp(bot)});
