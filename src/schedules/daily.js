@@ -64,9 +64,12 @@ export const versionLog = async (bot) => {
 
   const verLog = `
   ⭐️ AI 助手升级完毕，新增以下功能：
-  1. 再提5-12就鸡哔你
+  1. 接入 GPT-4 模型，替换文心一言（百度真不行）
+  2. 将微信登录内核 bridge，由 web 端切换至 PC 端 (尝试解决被踢出登录的问题)
+  3. 接入 LangChain 为后续显著增加 AI 能力做准备
+  4. 聊天对话代码迁移至 LangChain 实现
   
-  -- [Ver: 1.15]
+  -- [Ver: 1.20]
   `;
 
   if (verLog) {
