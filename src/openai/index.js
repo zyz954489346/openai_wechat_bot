@@ -96,9 +96,7 @@ export const chatWithThirdOpenAI = async (prompt, model='gpt-4') => {
 
   console.log('🚀🚀🚀 / reply', response)
 
-  const reply = markdownToText(response.content)
-
-  return `${reply}\n来自 ${model}`
+  return markdownToText(response.content)
 }
 
 
