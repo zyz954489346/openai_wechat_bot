@@ -13,7 +13,10 @@ const configuration = new Configuration({
 })
 const openai = new OpenAIApi(configuration)
 
-// GPT-3.5调用
+/**
+ * GPT-3.5调用
+ * @deprecated This function is deprecated. Use newFunction instead.
+ */
 export async function getOpenAiReply(prompt) {
   console.log('🚀🚀🚀 / prompt', prompt)
   //let chosen_model = 'text-davinci-003'
@@ -74,7 +77,7 @@ function markdownToText(markdown) {
     .toString()
 }
 
-// 2023-12-12 GPT4 第三方调用
+// GPT4 第三方调用
 export const chatWithThirdOpenAI = async (prompt, model='gpt-4') => {
 
   const chat = new ChatOpenAI({
@@ -97,6 +100,10 @@ export const chatWithThirdOpenAI = async (prompt, model='gpt-4') => {
   console.log('🚀🚀🚀 / reply', response)
 
   return markdownToText(response.content)
+}
+
+// Agent 意图分析 + tools [webSearch or Chat]
+export const chatByAgent = (prompt) => {
 }
 
 

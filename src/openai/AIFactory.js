@@ -1,4 +1,4 @@
-import { chatWithThirdOpenAI, getOpenAiReply as openAIChat } from "./index.js";
+import { chatWithThirdOpenAI } from "./index.js";
 import {chatWithBot4 as baiduAIChat} from './baidu.js'
 import dotenv from 'dotenv'
 
